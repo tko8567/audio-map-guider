@@ -13,12 +13,10 @@ import com.example.daniily.footballmap_audiochampionshipguiderexample.R;
 import com.example.daniily.footballmap_audiochampionshipguiderexample.activities.networking.CallbackOnResponse;
 import com.example.daniily.footballmap_audiochampionshipguiderexample.activities.networking.NetworkModule;
 import com.example.daniily.footballmap_audiochampionshipguiderexample.activities.networking.models.Routes;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 import retrofit2.Response;
 
@@ -73,6 +71,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        testRequest();
         // executed on start when map is ready
     }
 
@@ -83,17 +82,18 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             mMap.setMapType(mMapTypeDialogRadioGroup.getCheckedRadioButtonId());
         }
         mOverlayOptionsDialog.hide();
-
-        testRequest();
     }
 
     private void testRequest() {
-        NetworkModule.getInstance().directionsService.getPolyline("Chicago,IL", "Los+Angeles,CA", new CallbackOnResponse() {
+        LatLng pravdinsk = new LatLng(54.441314, 21.011982);
+        LatLng kaliningrad = new LatLng(54.710426, 20.452214);
+
+        NetworkModule.getInstance().directionsService.getPolyline(kaliningrad, pravdinsk, new CallbackOnResponse() {
             @Override
             public void onResponseSuccess(Response response) {
                 Routes routes = (Routes) response.body();
-                String polyline = routes.getRouts().get(0).getPolyline().getPoints();
-                Toast.makeText(MapsActivity.this, "Polyline: " + polyline, Toast.LENGTH_SHORT).show();
+                routes.getCoordinates();
+                Toast.makeText(MapsActivity.this, "OK size = " + routes.getCoordinates().size(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -102,6 +102,5 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
     }
-
 
 }

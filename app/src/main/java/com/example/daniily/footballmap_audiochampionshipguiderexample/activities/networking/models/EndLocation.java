@@ -6,11 +6,10 @@ import com.squareup.moshi.Json;
  * Created by Dmitrii Polyakov on KENIGHACK 2018.
  */
 
-public class OverviewPolyline {
-    @Json(name = "points")
-    private String points;
+class EndLocation {
+    @Json(name = "lat")
+    Double lat;
 
-    public String getPoints() {
-        return points;
-    }
+    @Json(name = "lng")
+    Double lng;
 }
