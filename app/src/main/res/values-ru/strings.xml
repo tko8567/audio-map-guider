@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Аудио гайдер</string>
+    <string name="title_activity_maps">Карта</string>
+    <string name="menu_option_road_choice">Выберите маршрут</string>
+    <string name="menu_option_settings">Настройки</string>
+    <string name="map_type_offering">Выберите тип карты</string>
+    <string name="map_type_none">Нет</string>
+    <string name="map_type_normal">Нормальный</string>
+    <string name="map_type_satellite">Спутник</string>
+    <string name="map_type_terrain">Ландшафт</string>
+    <string name="map_type_hybrid">Гибритный</string>
+    <string name="dialog_option_accept">Принять</string>
+    <string name="dialog_option_decline">Отменить</string>
+    <string name="map_menu_switch_map_type">Сменить тип карты</string>
+    <string name="contentDescription_map_icon">Иконка карты</string>
+    <string name="contentDescription_settings_icon">Иконка настроек</string>
 </resources>
