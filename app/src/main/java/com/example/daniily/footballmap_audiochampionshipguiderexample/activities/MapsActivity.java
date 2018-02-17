@@ -7,14 +7,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.daniily.footballmap_audiochampionshipguiderexample.R;
+import com.example.daniily.footballmap_audiochampionshipguiderexample.activities.networking.CallbackOnResponse;
+import com.example.daniily.footballmap_audiochampionshipguiderexample.activities.networking.NetworkModule;
+import com.example.daniily.footballmap_audiochampionshipguiderexample.activities.networking.models.Routes;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import retrofit2.Response;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -78,6 +84,24 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
         mOverlayOptionsDialog.hide();
 
+        testRequest();
     }
+
+    private void testRequest() {
+        NetworkModule.getInstance().directionsService.getPolyline("Chicago,IL", "Los+Angeles,CA", new CallbackOnResponse() {
+            @Override
+            public void onResponseSuccess(Response response) {
+                Routes routes = (Routes) response.body();
+                String polyline = routes.getRouts().get(0).getPolyline().getPoints();
+                Toast.makeText(MapsActivity.this, "Polyline: " + polyline, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onResponseError(String error) {
+                Toast.makeText(MapsActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
 }
