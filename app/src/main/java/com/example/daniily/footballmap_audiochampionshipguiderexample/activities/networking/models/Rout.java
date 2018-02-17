@@ -2,15 +2,24 @@ package com.example.daniily.footballmap_audiochampionshipguiderexample.activitie
 
 import com.squareup.moshi.Json;
 
+import java.util.List;
+
 /**
- * Created by Vesbat on 17.02.2018.
+ * Created by Dmitrii Polyakov on KENIGHACK 2018.
  */
 
 public class Rout {
     @Json(name = "overview_polyline")
     private OverviewPolyline polyline;
 
+    @Json(name = "legs")
+    private List<Leg> legs;
+
     public OverviewPolyline getPolyline() {
         return polyline;
+    }
+
+    public List<Leg> getLegs() {
+        return legs;
     }
 }

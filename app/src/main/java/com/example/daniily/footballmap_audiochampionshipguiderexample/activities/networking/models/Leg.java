@@ -2,15 +2,18 @@ package com.example.daniily.footballmap_audiochampionshipguiderexample.activitie
 
 import com.squareup.moshi.Json;
 
+import java.util.List;
+
 /**
  * Created by Dmitrii Polyakov on KENIGHACK 2018.
  */
 
-public class OverviewPolyline {
-    @Json(name = "points")
-    private String points;
 
-    public String getPoints() {
-        return points;
+public class Leg {
+    @Json(name = "steps")
+    private List<Step> steps;
+
+    public List<Step> getSteps() {
+        return steps;
     }
 }
