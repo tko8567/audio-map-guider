@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -138,7 +141,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 Log.d(TAG, "Success, response=" + Arrays.toString(((Routes) response.body()).getCoordinates().toArray()));
                 List<LatLng> latLngs = ((Routes) response.body()).getCoordinates();
                 mMap.addMarker(new MarkerOptions()
-                        .position(latLngs.get(0)));
+                        .position(latLngs.get(0))
+                        .alpha(0.75f)
+                        .icon(BitmapDescriptorFactory.fromBitmap(
+                                ((BitmapDrawable)getResources().getDrawable(R.mipmap.location_pointer)).getBitmap()
+                        )));
                 /*for (LatLng latLng : latLngs) {
                     mMap.addMarker(new MarkerOptions()
                             .position(latLng)
@@ -146,8 +153,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 }*/
                 mMap.addPolyline(new PolylineOptions()
                         .addAll(latLngs)
-                        .color(0xA0FF8000)
-                        .width(5f)
+                        .color(0x80FFA000)
+                        .width(12f)
                 );
             }
 
