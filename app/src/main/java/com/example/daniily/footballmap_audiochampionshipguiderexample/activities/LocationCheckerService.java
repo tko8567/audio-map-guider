@@ -10,11 +10,12 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.example.daniily.footballmap_audiochampionshipguiderexample.activities.networking.models.GuideRoute;
-import com.example.daniily.footballmap_audiochampionshipguiderexample.activities.networking.models.Place;
+import com.example.daniily.footballmap_audiochampionshipguiderexample.networking.models.GuideRoute;
+import com.example.daniily.footballmap_audiochampionshipguiderexample.networking.models.Place;
 
 public class LocationCheckerService extends IntentService {
     private static final String TAG = "LocationCheckerService";
@@ -56,14 +57,19 @@ public class LocationCheckerService extends IntentService {
 
                             mMediaPlayer = MediaPlayer.create(getApplicationContext(), res);
 
-                            if (mMediaPlayer.isPlaying()) {
-                                mMediaPlayer.release();
-                            } else {
-                                mMediaPlayer.setOnCompletionListener(mMediaPlayer -> {
-                                    mMediaPlayer.release();
-                                });
-                                mMediaPlayer.start();
-                            }
+                            new Handler().postDelayed(
+                                    () -> {
+                                        if (mMediaPlayer.isPlaying()) {
+                                            mMediaPlayer.release();
+                                        } else {
+                                            mMediaPlayer.setOnCompletionListener(mMediaPlayer -> {
+                                                mMediaPlayer.release();
+                                            });
+                                            mMediaPlayer.start();
+                                        }
+                                    },
+                                    1000
+                            );
 
                         }
 

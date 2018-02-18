@@ -158,6 +158,10 @@ public class MenuActivity extends AppCompatActivity {
     private View.OnClickListener onRoute1Click = v -> {
         Intent mapIntent = new Intent(MenuActivity.this, MapsActivity.class);
         startActivity(mapIntent);
+
+        startService(
+                new Intent(this, LocationCheckerService.class)
+        );
     };
 
 

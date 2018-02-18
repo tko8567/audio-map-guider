@@ -15,8 +15,6 @@ import org.json.JSONObject;
 
 public class SharedPreferencesFiller extends Activity {
 
-    private final static double[] dest1 = {54.706383, 20.512047};
-    private final static double[] dest2 = {54.706634, 20.500288};
 
     private static final String TAG = "SharedPreferencesFiller";
 
