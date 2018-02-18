@@ -19,10 +19,10 @@ public class DirectionsService {
 
     public void getPolyline(LatLng origin, LatLng destination, CallbackOnResponse callback) {
 
-        String originStr = String.valueOf(origin.latitude)+","+String.valueOf(origin.longitude);
-        String destinationStr = String.valueOf(destination.latitude)+","+String.valueOf(destination.longitude);
+        String originStr = String.valueOf(origin.latitude) + "," + String.valueOf(origin.longitude);
+        String destinationStr = String.valueOf(destination.latitude) + "," + String.valueOf(destination.longitude);
 
-        enqueue(api.getDirection(originStr, destinationStr, "AIzaSyB6ZhhKeZaoUUxaQL11jEVzQ-ASur-QV60"), callback);
+        enqueue(api.getDirection(originStr, destinationStr, "walking", "AIzaSyB6ZhhKeZaoUUxaQL11jEVzQ-ASur-QV60"), callback);
     }
 
     private <T> void enqueue(Call<T> call, final CallbackOnResponse callback) {

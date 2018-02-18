@@ -16,5 +16,6 @@ interface DirectionsApi {
     @GET("directions/json?")
     Call<Routes> getDirection(@Query("origin") String origin,
                               @Query("destination") String destination,
+                              @Query("mode") String mode,
                               @Query("key") String apiKey);
 }
