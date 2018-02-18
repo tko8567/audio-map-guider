@@ -16,7 +16,7 @@ public class LocationCheckerService extends IntentService {
     @Override
     public void onCreate() {
         super.onCreate();
-//        mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.kafsobor);
+        mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.kafsobor);
     }
 
     public LocationCheckerService() {
