@@ -1,4 +1,4 @@
-package com.example.daniily.footballmap_audiochampionshipguiderexample.activities.networking.models;
+package com.example.daniily.footballmap_audiochampionshipguiderexample.networking.models;
 
 import com.squareup.moshi.Json;
 
