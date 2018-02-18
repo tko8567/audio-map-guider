@@ -47,9 +47,15 @@ public class Place {
         return locates.get(0).description;
     }
 
-    class PlaceLocate {
+    public static class PlaceLocate {
         Constants.Localization localization;
         String name;
         String description;
+
+        public PlaceLocate(Constants.Localization localization, String name, String description) {
+            this.localization = localization;
+            this.name = name;
+            this.description = description;
+        }
     }
 }
