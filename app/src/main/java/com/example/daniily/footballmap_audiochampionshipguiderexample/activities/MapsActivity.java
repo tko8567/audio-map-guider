@@ -1,8 +1,11 @@
 package com.example.daniily.footballmap_audiochampionshipguiderexample.activities;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -14,6 +17,7 @@ import com.example.daniily.footballmap_audiochampionshipguiderexample.R;
 import com.example.daniily.footballmap_audiochampionshipguiderexample.networking.CallbackOnResponse;
 import com.example.daniily.footballmap_audiochampionshipguiderexample.networking.NetworkModule;
 import com.example.daniily.footballmap_audiochampionshipguiderexample.networking.models.Routes;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -45,6 +49,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private static final String LAT = "lat";
     private static final String LNG = "lng";
 
+    private static final int REQUEST_PERMISSION_LOCATION = 0;
+    private static final String[] LOCATION_PERMISSIONS =
+            {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +68,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         mSharedPreferences = getSharedPreferences(ROUTE, MODE_PRIVATE);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -105,31 +113,31 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         JSONArray jsonLandmarksArray;
         try {
-            jsonLandmarksArray = (JSONArray)(jsonRoute.get(ROUTE));
+            jsonLandmarksArray = (JSONArray) (jsonRoute.get(ROUTE));
         } catch (JSONException e) {
             e.printStackTrace();
             throw new RuntimeException();
         }
 
         List<LatLng> latLngs = new ArrayList<>();
-        for (int i = 0; i < 23; i++) try {
-            JSONObject jsonNextLandmark = jsonLandmarksArray.getJSONObject(i);
-            latLngs.add(new LatLng(
-                    jsonNextLandmark.getDouble(LAT),
-                    jsonNextLandmark.getDouble(LNG)
-            ));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        for (int i = 0; i < 23; i++)
+            try {
+                JSONObject jsonNextLandmark = jsonLandmarksArray.getJSONObject(i);
+                latLngs.add(new LatLng(
+                        jsonNextLandmark.getDouble(LAT),
+                        jsonNextLandmark.getDouble(LNG)
+                ));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
 
-        CallbackOnResponse networkCallback = new CallbackOnResponse()
-        {
+        CallbackOnResponse networkCallback = new CallbackOnResponse() {
             @Override
             public void onResponseSuccess(Response response) {
                 Log.d(TAG, "Success, response=" + Arrays.toString(((Routes) response.body()).getCoordinates().toArray()));
                 List<LatLng> latLngs = ((Routes) response.body()).getCoordinates();
-                for (LatLng latLng: latLngs) {
+                for (LatLng latLng : latLngs) {
                     mMap.addMarker(new MarkerOptions()
                             .position(latLng)
                     );
@@ -149,9 +157,16 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             NetworkModule
                     .getInstance()
                     .directionsService
-                    .getPolyline(latLngs.get(i), latLngs.get(i+1), networkCallback);
+                    .getPolyline(latLngs.get(i), latLngs.get(i + 1), networkCallback);
 
-        // executed on start when map is ready
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, LOCATION_PERMISSIONS, REQUEST_PERMISSION_LOCATION);
+            return;
+        }
+        mMap.setMyLocationEnabled(true);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                new LatLng(54.714618, 20.529448), 16
+        ));
     }
 
 
@@ -163,6 +178,4 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mOverlayOptionsDialog.hide();
 
     }
-
-
 }
