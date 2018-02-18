@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <LinearLayout
+        android:id="@+id/menu_option_road_choice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:onClick="onMenuClick"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/map_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="15dp"
+            android:src="@mipmap/map_icon"
+            android:contentDescription="@string/contentDescription_map_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/menu_option_road_choice"
+            style="@style/PrimaryText"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/menu_option_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menu_option_road_choice"
+        android:orientation="horizontal"
+        android:gravity="center"
+        tools:ignore="UseCompoundDrawables">
+
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="15dp"
+            android:src="@mipmap/settings_icon"
+            android:contentDescription="@string/contentDescription_settings_icon" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/menu_option_settings"
+            android:onClick="onOptionsClick"
+            style="@style/PrimaryText"/>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

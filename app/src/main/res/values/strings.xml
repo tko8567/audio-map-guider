@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Audio guider</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="menu_option_road_choice">Choose the road</string>
+    <string name="menu_option_settings">Settings</string>
+    <string name="map_type_offering">Choose the map type</string>
+    <string name="map_type_none">None</string>
+    <string name="map_type_normal">Normal</string>
+    <string name="map_type_satellite">Satellite</string>
+    <string name="map_type_terrain">Terrain</string>
+    <string name="map_type_hybrid">Hybrid</string>
+    <string name="dialog_option_accept">Accept</string>
+    <string name="dialog_option_decline">Decline</string>
+    <string name="map_menu_switch_map_type">Switch map type</string>
+    <string name="contentDescription_map_icon">Map icon</string>
+    <string name="contentDescription_settings_icon">Settings icon</string>
+</resources>
