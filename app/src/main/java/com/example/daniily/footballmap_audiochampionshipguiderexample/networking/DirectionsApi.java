@@ -1,10 +1,9 @@
-package com.example.daniily.footballmap_audiochampionshipguiderexample.activities.networking;
+package com.example.daniily.footballmap_audiochampionshipguiderexample.networking;
 
-import com.example.daniily.footballmap_audiochampionshipguiderexample.activities.networking.models.Routes;
+import com.example.daniily.footballmap_audiochampionshipguiderexample.networking.models.Routes;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**

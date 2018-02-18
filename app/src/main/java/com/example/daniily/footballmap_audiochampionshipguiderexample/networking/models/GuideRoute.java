@@ -1,4 +1,4 @@
-package com.example.daniily.footballmap_audiochampionshipguiderexample.activities.networking.models;
+package com.example.daniily.footballmap_audiochampionshipguiderexample.networking.models;
 
 import com.example.daniily.footballmap_audiochampionshipguiderexample.activities.Constants;
 import com.google.android.gms.maps.model.LatLng;

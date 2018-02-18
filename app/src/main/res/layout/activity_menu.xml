@@ -7,7 +7,7 @@
     android:gravity="center">
 
     <LinearLayout
-        android:id="@+id/menu_option_road_choice"
+        android:id="@+id/menu_option_route_choice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -26,7 +26,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/menu_option_road_choice"
+            android:text="@string/menu_option_route_choice"
             style="@style/PrimaryText"/>
 
     </LinearLayout>
@@ -36,7 +36,7 @@
         android:id="@+id/menu_option_settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/menu_option_road_choice"
+        android:layout_below="@+id/menu_option_route_choice"
         android:orientation="horizontal"
         android:gravity="center"
         tools:ignore="UseCompoundDrawables">
@@ -56,8 +56,36 @@
             android:text="@string/menu_option_settings"
             style="@style/PrimaryText"/>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/route_1"
+        android:alpha="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menu_option_route_choice"
+        android:orientation="horizontal"
+        android:gravity="center"
+        tools:ignore="UseCompoundDrawables">
+
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="15dp"
+            android:src="@mipmap/map_route"
+            android:contentDescription="@string/contentDescription_settings_icon" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/route_1_title"
+            style="@style/PrimaryText"/>
 
     </LinearLayout>
+
+
 
 
 </RelativeLayout>
