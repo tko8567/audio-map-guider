@@ -41,6 +41,8 @@
         <activity
             android:name=".activities.MapsActivity"
             android:label="@string/title_activity_maps" />
+
+        <service android:name=".activities.LocationCheckerService"/>
     </application>
 
 </manifest>
