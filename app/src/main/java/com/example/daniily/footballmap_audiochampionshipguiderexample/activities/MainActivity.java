@@ -1,6 +1,9 @@
 package com.example.daniily.footballmap_audiochampionshipguiderexample.activities;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -20,6 +23,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(
                 new Intent(this, MenuActivity.class)
         );
-
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            String[ ] permissions = new String[2];
+            permissions[0] = Manifest.permission.ACCESS_FINE_LOCATION;
+            permissions[1] = Manifest.permission.ACCESS_COARSE_LOCATION;
+            ActivityCompat.requestPermissions(this, permissions, 0);
+        }
     }
 }

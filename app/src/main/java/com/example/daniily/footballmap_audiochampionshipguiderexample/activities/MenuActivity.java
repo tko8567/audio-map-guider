@@ -25,5 +25,6 @@ public class MenuActivity extends AppCompatActivity {
     public void onMenuClick(View v) {
         Intent mapIntent = new Intent(MenuActivity.this, MapsActivity.class);
         startActivity(mapIntent);
+        startService(new Intent(this, LocationCheckerService.class));
     }
 }
