@@ -1,5 +1,7 @@
 package com.example.daniily.footballmap_audiochampionshipguiderexample.networking.models;
 
+import android.location.Location;
+
 import com.example.daniily.footballmap_audiochampionshipguiderexample.activities.Constants;
 import com.google.android.gms.maps.model.LatLng;
 
@@ -26,7 +28,8 @@ public class Place {
     }
 
     public String getAudio(Constants.Localization localization){
-        return localization.toString().toLowerCase() + "/" + audio;
+        //return localization.toString().toLowerCase() + "/" + audio;
+        return audio;
     }
 
     public String getName(Constants.Localization localization){
@@ -57,5 +60,19 @@ public class Place {
             this.name = name;
             this.description = description;
         }
+    }
+
+    public LatLng getCoordinates() {
+        return coordinates;
+    }
+
+    public Location getLocation() {
+
+        Location point = new Location("");
+
+        point.setLatitude(coordinates.latitude);
+        point.setLongitude(coordinates.longitude);
+
+        return point;
     }
 }
