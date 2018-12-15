@@ -19,4 +19,9 @@
     <string name="noRoutesAvailable">Нет доступных маршрутов</string>
     <string name="menuHeader">Выберите маршрут</string>
     <string name="routeName_greatPrusses">По стопам Великих Пруссов</string>
+    <string name="landmark_RosgartenersGate">Росгартенские ворота</string>
+    <string name="landmark_VasilevskiyMonument">Памятник Василевскому</string>
+    <string name="landmark_KronprinzBarracks">Казармы \"Кронпринц\"</string>
+    <string name="landmark_KingsGate">Королевские ворота</string>
+    <string name="landmark_SackheimGate">Закхаймские ворота</string>
 </resources>

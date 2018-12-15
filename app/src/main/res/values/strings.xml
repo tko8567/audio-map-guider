@@ -18,4 +18,9 @@
     <string name="noRoutesAvailable">No routes available</string>
     <string name="menuHeader">Choose the route</string>
     <string name="routeName_greatPrusses">At  the steps of the Great Prusses</string>
+    <string name="landmark_RosgartenersGate">Rosgartener Gate</string>
+    <string name="landmark_VasilevskiyMonument">Vasilevskiy Monument</string>
+    <string name="landmark_KronprinzBarracks">Kronprinz Barracks</string>
+    <string name="landmark_KingsGate">King\'s Gate</string>
+    <string name="landmark_SackheimGate">Sackheim Gate</string>
 </resources>
