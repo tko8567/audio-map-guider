@@ -21,11 +21,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         startActivity(
-                new Intent(this, MenuActivity.class)
+                new Intent(this, MenuActivity2.class)
         );
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            String[ ] permissions = new String[2];
+            String[] permissions = new String[2];
             permissions[0] = Manifest.permission.ACCESS_FINE_LOCATION;
             permissions[1] = Manifest.permission.ACCESS_COARSE_LOCATION;
             ActivityCompat.requestPermissions(this, permissions, 0);

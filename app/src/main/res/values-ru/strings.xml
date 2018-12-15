@@ -16,4 +16,7 @@
     <string name="contentDescription_map_icon">Иконка карты</string>
     <string name="contentDescription_settings_icon">Иконка настроек</string>
     <string name="route_1_title">По стопам древних Пруссов</string>
+    <string name="noRoutesAvailable">Нет доступных маршрутов</string>
+    <string name="menuHeader">Выберите маршрут</string>
+    <string name="routeName_greatPrusses">По стопам Великих Пруссов</string>
 </resources>

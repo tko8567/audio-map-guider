@@ -15,4 +15,7 @@
     <string name="contentDescription_map_icon">Map icon</string>
     <string name="contentDescription_settings_icon">Settings icon</string>
     <string name="route_1_title">Following ancient Prusses</string>
+    <string name="noRoutesAvailable">No routes available</string>
+    <string name="menuHeader">Choose the route</string>
+    <string name="routeName_greatPrusses">At  the steps of the Great Prusses</string>
 </resources>

@@ -22,7 +22,6 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -33,7 +32,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Response;
@@ -106,6 +104,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             Log.wtf(TAG, "jsonRouteString is null");
             throw new RuntimeException();
         }
+        Log.d(TAG, "routeStringJson=" + jsonRouteString);
         JSONObject jsonRoute;
         try {
             jsonRoute = new JSONObject(jsonRouteString);
@@ -123,7 +122,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
 
         List<LatLng> latLngs = new ArrayList<>();
-        for (int i = 0; i < 23; i++)
+        for (int i = 0; i < 8; i++)
             try {
                 JSONObject jsonNextLandmark = jsonLandmarksArray.getJSONObject(i);
                 latLngs.add(new LatLng(
@@ -138,7 +137,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         CallbackOnResponse networkCallback = new CallbackOnResponse() {
             @Override
             public void onResponseSuccess(Response response) {
-                Log.d(TAG, "Success, response=" + Arrays.toString(((Routes) response.body()).getCoordinates().toArray()));
+                Log.d(TAG, "Success, response=" + response.body());
                 List<LatLng> latLngs = ((Routes) response.body()).getCoordinates();
                 mMap.addMarker(new MarkerOptions()
                         .position(latLngs.get(0))
